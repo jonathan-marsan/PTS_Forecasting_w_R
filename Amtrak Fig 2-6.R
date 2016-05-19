@@ -18,7 +18,7 @@ ridership.lm <- tslm(ridership.ts ~ trend + I(trend^2))
 
 # par() used to modify graphical parameter settings
 # In this case, it divides screen in upper and lower sections to fit two graphs
-par(mfrow = c(2, 1))
+par(mfrow = c(1, 1))
 
 # Figure 2-6
 plot(ridership.ts, xlab = "Time", ylab = "Ridership", ylim = c(1300, 2300),
@@ -27,7 +27,8 @@ lines(ridership.lm$fitted, lwd = 5) #  lwd is line width
 
 # Use the stats::window to get subset of a class 'ts' object
 ridership.ts.zoom <- window(ridership.ts, start = c(1997, 1), end = c(2000, 12))
+# Compute trend
+ridership.lm.zoom <- tslm(ridership.ts.zoom ~ trend + I(trend^2))
 plot(ridership.ts.zoom, xlab = "Time", ylab = "Ridership", ylim = c(1300, 2300),
      bty = "l")
-ridership.lm.zoom <- tslm(ridership.ts.zoom ~ trend + I(trend^2))
 lines(ridership.lm.zoom$fitted, lwd = 2)
