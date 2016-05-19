@@ -1,1 +1,4 @@
 data/
+.Rproj.user
+.DS_Store
+PTS_Forecasting_w_R.Rproj
